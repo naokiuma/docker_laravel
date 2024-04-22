@@ -7,7 +7,7 @@
 ```
 
 アプリ url<br>
-http://localhost:8888/<br><br>
+<br><br>
 
 PHPmyadmin<br>
 http://localhost:8889/<br><br>

@@ -7,6 +7,7 @@ use App\Models\NewsletterUser;
 use App\Models\NewsletterUserAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use DB;
 
 /**
  * /product/1 or /product/2などでアクセス
@@ -15,25 +16,37 @@ class ProductController extends Controller
 {
     public function show(Request $request, $id) // 本来はここに商品モデルをバインティングしますが、今回は省略します
     {
+	
 
 		$test = NewsletterUserActionType::Sns_Sales_Viewed;
 
+
         $newsletter_uuid = $request->cookie('newsletter_uuid');
+		var_dump($newsletter_uuid);
+
+
+
         $newsletter_user = NewsletterUser::where('uuid', $newsletter_uuid)->first();
+		// var_dump($newsletter_user);
+
 
         if(! is_null($newsletter_user)) {
+			var_dump('こちら');
 
             // 本来この部分はミドルウェアなどで共通化するべきですが、今回は省略します。
             // またこの部分は可変にするべきです
 
             if(intval($id) === 1) { // SNS集客に関するページを想定してます
 
+				// DB::enableQueryLog();
                 // 一番最初に商品ページを見たデータを取得する
                 $oldest_action = NewsletterUserAction::query()
                     ->where('newsletter_user_id', $newsletter_user->id)
                     ->where('action_type', NewsletterUserActionType::Sns_Sales_Viewed)
                     ->oldest()
                     ->first();
+
+				// dd(DB::getQueryLog());
                 if(! is_null($oldest_action)) {
 
                     if($oldest_action->created_at->diffInDays() >= 7) { // 初めて商品ページを見てから7日以上経過しているか？
