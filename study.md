@@ -34,3 +34,19 @@ resources/views/components/my-alert.blade.phpが作られる。<br>
 ```
 サブビュー(インクルードで普通に使う)ものもあります。
 
+## レスポンスオブジェクトについて
+helloコントローラーの responce_test を参照
+## リクエストオブジェクトについて
+アクションの引数に「Request $req」などを追加するのみ。<br>
+formの送信値もこの$reqから取得できる。例えば以下なら、requestのnameの送信を取得できる。
+
+```
+public function hoge(Request $req)
+{
+	$name = $req->name;
+}
+```
+
+## formのおまじない
+@csrf
+<from>の下に記載しておこう。

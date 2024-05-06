@@ -60,4 +60,39 @@ class HelloController extends Controller
 		];
 		return view('hello.comp', $data);
 	}
+
+
+	/**
+	 * レスポンスの記述のテスト
+	 */
+	public function responce_test()
+	{
+		$data = [
+			'msg'  => 'こんにちは世界 in header'
+		];
+		//httpパラメータの指定
+		// return response()->view('hello.view', $data, 305);
+		// return response()->view('hello.view', $data, 404);
+		// return response()->view('hello.view', $data, 200);
+
+		//contentsタイプの指定
+		// return response()->view('hello.view', $data, 200)
+		// 	->header('Content-Type', 'text/xml');
+
+		//json形式で返す
+		return response()->json([
+			'name' => 'Yoshihiro,YAMADA',
+			'sex' => 'male',
+			'age' => 18,
+		]);
+	}
+
+	/**
+	 * リクエストテスト
+	 */
+	public function request_test(Request $req)
+	{
+		// dd($req);
+		return request()->path();
+	}
 }

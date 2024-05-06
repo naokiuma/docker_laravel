@@ -1,6 +1,6 @@
 <!-- 利用する共通レイアウトを宣言 -->
 @extends('layouts.base')
-@section('title','comp')
+@section('title','compですよー^^')
 
 <!-- sectionとendsectionの間にコンテンツ -->
 @section('main')

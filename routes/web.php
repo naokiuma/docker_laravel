@@ -20,9 +20,10 @@ Route::get('/folders/{id}/tasks', [TaskController::class, 'index'])->name('tasks
 // Route::get('/hello/if', [HelloController::class, 'if']);
 // Route::get('/hello/master', [HelloController::class, 'master']);
 // Route::get('/hello/comp', [HelloController::class, 'comp']);
+// ↑これは、、、
 
 
-
+// ↓こうまとめられる
 Route::controller(HelloController::class)->group(function () {
 	Route::get('/hello', 'view');
 	Route::get('/hello/list', 'list');
@@ -30,6 +31,8 @@ Route::controller(HelloController::class)->group(function () {
 	Route::get('/hello/if', 'if');
 	Route::get('/hello/master', 'master');
 	Route::get('/hello/comp', 'comp');
+	Route::get('/hello/responce_test', 'responce_test');
+	Route::get('/hello/request_test', 'request_test');
 });
 
 //whereで引数に桁数などを指定できる
