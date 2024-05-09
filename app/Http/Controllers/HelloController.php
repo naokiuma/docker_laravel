@@ -95,4 +95,28 @@ class HelloController extends Controller
 		// dd($req);
 		return request()->path();
 	}
+
+
+	public function hasmany()
+	{
+		return view('hello.hasmany', [
+			'book' => Book::find(1)
+		]);
+	}
+
+
+	//フォーム
+	public function create()
+	{
+		return view('hello.create');
+	}
+
+	public function store(Request $req)
+	{
+		// dd($req);
+		$data = new Book;
+		$data->fill($req->except('_token'))->save();
+		return redirect('hello/create');
+		// return view('hello.create');
+	}
 }

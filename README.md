@@ -11,6 +11,7 @@ http://localhost:8888/<br><br>
 
 PHPmyadmin<br>
 http://localhost:8889/<br><br>
+sail
 
 参考 url<br>
 https://qiita.com/Naaaa/items/9b9b6b05a93b8b8f3cec<br><br>

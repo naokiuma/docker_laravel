@@ -33,6 +33,9 @@ Route::controller(HelloController::class)->group(function () {
 	Route::get('/hello/comp', 'comp');
 	Route::get('/hello/responce_test', 'responce_test');
 	Route::get('/hello/request_test', 'request_test');
+	Route::get('/hello/hasmany', 'hasmany');
+	Route::get('/hello/create', 'create');
+	Route::post('/hello/store', 'store');
 });
 
 //whereで引数に桁数などを指定できる
