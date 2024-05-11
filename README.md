@@ -1,23 +1,46 @@
 ## docker laravel in mac
 
-起動
+### 起動
 
 ```
 ./vendor/bin/sail up
 ```
 
-アプリ url<br>
+### アプリ url
 http://localhost:8888/<br><br>
 
-PHPmyadmin<br>
+### PHPmyadmin
 http://localhost:8889/<br><br>
 sail
-
-参考 url<br>
+### 参考 url
 https://qiita.com/Naaaa/items/9b9b6b05a93b8b8f3cec<br><br>
 
-初回、マイグレート<br><br>
+### 初回、マイグレート
+```
 ./vendor/bin/sail artisan migrate
+```
+
+### saveとcreateの違い
+https://qiita.com/kouki_o9/items/92a2c3489117ef02bd72
+<br>saveで挿入も更新も可能。
+<br>
+
+### バリデーションについて
+モデルに記載。
+```
+public static $rules = [
+	'isbn'=>'required',
+	'title'=>'required|string|max:10',
+	'price'=>'integer|min:0',
+	'publisher'=>'required|in:走跳社,テックCode,ジャパンIT,優丸システム,ITEmotion',
+	'published'=>'required|date'
+];
+
+```
+
+
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

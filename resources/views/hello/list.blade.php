@@ -20,6 +20,7 @@
 			<th>価格</th>
 			<th>出版社</th>
 			<th>刊行日</th>
+			<th></th>
 		</tr>
 		@foreach($records as $record)
 		<tr>
@@ -27,6 +28,10 @@
 			<td>{{$record -> price}}円</td>
 			<td>{{$record -> publisher}}</td>
 			<td class="<?php echo $loop->iteration === 2 ? 'test' : ''; ?>">{{$record -> published}}</td>
+			<td>
+				<a href="/hello/{{$record->id}}/edit">編集</a>
+				<a href="/hello/{{$record->id}}">削除</a>
+			</td>
 		</tr>
 		<!-- こういうので何コメの数字かにもアクセスできる -->
 		{{$loop->iteration}}

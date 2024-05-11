@@ -27,6 +27,9 @@ Route::get('/folders/{id}/tasks', [TaskController::class, 'index'])->name('tasks
 Route::controller(HelloController::class)->group(function () {
 	Route::get('/hello', 'view');
 	Route::get('/hello/list', 'list');
+	Route::get('/hello/{id}/edit', 'edit');
+	Route::patch('/hello/{id}', 'update');
+
 	Route::get('/hello/escape', 'escape');
 	Route::get('/hello/if', 'if');
 	Route::get('/hello/master', 'master');

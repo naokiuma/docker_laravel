@@ -115,8 +115,43 @@ class HelloController extends Controller
 	{
 		// dd($req);
 		$data = new Book;
+
+		//バリデーション
+		$req->validate(Book::$rules);
+
+		//この値以外を保存する
 		$data->fill($req->except('_token'))->save();
 		return redirect('hello/create');
 		// return view('hello.create');
+	}
+
+	// 編集画面
+	public function edit($id)
+	{
+		return view('hello.edit', [
+			'book' => Book::findOrFail($id)
+		]);
+	}
+
+	//更新
+	public function update(Request $req, $id)
+	{
+		// dd($req);
+		$book = Book::findOrFail($id);
+		$result = $req->validate(Book::$rules);
+
+		$book->fill($req->except('_token', '_method'))->save();
+
+		return redirect('hello/list');
+	}
+
+	//削除
+	public function destory(Request $id)
+	{
+		// dd($req);
+		$book = Book::findOrFail($id);
+		$book->delete();
+
+		return redirect('hello/list');
 	}
 }
